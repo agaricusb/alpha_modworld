@@ -1,0 +1,21 @@
+[
+{
+  "modid": "Modifyworld2",
+  "name": "ModifyWorld2",
+  "description": "Uses PermissionsEx nodes to block certain actions",
+  "version": "1.4.6.2",
+  "mcversion": "1.4.6",
+  "url": "http://www.minecraftforum.net/topic/1650110-mytown-aperf-server-protection-and-performance-mods/",
+  "updateUrl": "",
+  "authors": [
+    "AlphAest"
+  ],
+  "credits": "By AlphAest, idea from PEX's ModifyWorld",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "requiredMods": [ "Forge", "PermissionsEx" ],
+  "useDependencyInformation": "true"
+}
+]
