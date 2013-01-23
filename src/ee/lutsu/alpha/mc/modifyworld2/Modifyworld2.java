@@ -25,7 +25,7 @@ import net.minecraftforge.common.Configuration;
 @Mod(
 		modid="Modifyworld2", 
 		name="Modifyworld2", 
-		version="1.4.6.2"
+		version="1.4.7.0"
 	)
 @NetworkMod(clientSideRequired=false, serverSideRequired=true)
 public class Modifyworld2 

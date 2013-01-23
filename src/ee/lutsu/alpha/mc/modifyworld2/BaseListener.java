@@ -54,7 +54,7 @@ public abstract class BaseListener
 		String entityName = formatEnumString(entity.getEntityName());
 
 		if (entity instanceof EntityItem) {
-			entityName = getItemPermission(((EntityItem) entity).func_92014_d());
+			entityName = getItemPermission(((EntityItem) entity).getEntityItem());
 		}
 
 		if (entity instanceof EntityPlayer) {
