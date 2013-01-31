@@ -71,32 +71,28 @@ public class PlayerInformer {
 		return this.defaultMessage;
 	}
 
-	public String getMessage(EntityPlayer player, String permission) {
-		/*
-		if (PermissionsEx.isAvailable()) {
-			PermissionUser user = PermissionsEx.getUser(player);
+	public String getMessage(EntityPlayer player, String permission)
+	{
+		String message;
+		String perm = permission;
+		int index;
 
-			String message;
-			String perm = permission;
-			int index;
+		while ((index = perm.lastIndexOf(".")) != -1) {
+			perm = perm.substring(0, index);
 
-			while ((index = perm.lastIndexOf(".")) != -1) {
-				perm = perm.substring(0, index);
-
-				message = user.getOption("permission-denied-" + perm, String.valueOf(player.dimension), null);
-				if (message == null) {
-					continue;
-				}
-
-				return message;
+			message = Permissions.getOption(player.username, "permission-denied-" + perm, String.valueOf(player.dimension), null);
+			if (message == null) {
+				continue;
 			}
 
-			message = user.getOption("permission-denied", String.valueOf(player.dimension), null);
+			return message;
+		}
 
-			if (message != null) {
-				return message;
-			}
-		}*/
+		message = Permissions.getOption(player.username, "permission-denied", String.valueOf(player.dimension), null);
+
+		if (message != null) {
+			return message;
+		}
 
 		return getMessage(permission);
 	}

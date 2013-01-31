@@ -3,6 +3,7 @@ package ee.lutsu.alpha.mc.modifyworld2;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
+import ru.tehkode.permissions.IPermissionEntity;
 import ru.tehkode.permissions.IPermissions;
 
 public class Permissions
@@ -57,5 +58,17 @@ public class Permissions
 			return "";
 
 		return pex.suffix(player, world);
+	}
+	
+	public static String getOption(String player, String world, String node, String def)
+	{
+		if (!pexAvailable())
+			return def;
+		
+		IPermissionEntity entity = pex.getUser(player);
+		if (entity == null)
+			return def;
+		
+		return entity.getOption(node, world, def);
 	}
 }
