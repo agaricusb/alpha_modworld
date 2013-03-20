@@ -81,11 +81,11 @@ public abstract class BaseListener
 
 	// Functional programming fuck yeah
 	private String getMaterialPermission(Block type) {
-		return this.useMaterialNames ? formatEnumString(type.getBlockName()) : Integer.toString(type.blockID);
+		return this.useMaterialNames ? formatEnumString(type.getUnlocalizedName()) : Integer.toString(type.blockID);
 	}
 
 	private String getMaterialPermission(int type) {
-		return this.useMaterialNames ? formatEnumString(Block.blocksList[type].getBlockName()) : Integer.toString(type);
+		return this.useMaterialNames ? formatEnumString(Block.blocksList[type].getUnlocalizedName()) : Integer.toString(type);
 	}
 	
 	private String getMaterialPermission(int type, int metadata) {

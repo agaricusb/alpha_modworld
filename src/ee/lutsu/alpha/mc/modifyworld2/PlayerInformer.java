@@ -34,15 +34,12 @@ public class PlayerInformer {
 
 	private void loadConfig(Configuration config, String section) {
 
-		this.defaultMessage = config.get(section, "default-message", this.defaultMessage).value;
-		this.messageFormat = config.get(section, "message-format", this.messageFormat).value;
+		this.defaultMessage = config.get(section, "default-message", this.defaultMessage).getString();
+		this.messageFormat = config.get(section, "message-format", this.messageFormat).getString();
 		this.individualMessages = config.get(section, "individual-messages", this.individualMessages).getBoolean(this.individualMessages);
 
-		if (config.categories.get(section) != null)
-		{
-			for (Entry<String, Property> permission : config.categories.get(section).entrySet()) {
-				setMessage(permission.getKey(), permission.getValue().value.replace("/", "."));
-			}
+		for (Entry<String, Property> permission : config.getCategory(section).entrySet()) {
+			setMessage(permission.getKey(), permission.getValue().getString().replace("/", "."));
 		}
 	}
 
@@ -117,13 +114,13 @@ public class PlayerInformer {
 		/*if (obj instanceof ComplexEntityPart) { // Complex entities
 			return describeObject(((ComplexEntityPart) obj).getParent());
 		} else */ if (obj instanceof Item) { // Dropped items
-			return ((Item) obj).getItemName();
+			return ((Item) obj).getUnlocalizedName();
 		} else if (obj instanceof ItemStack) { // Items
 			return ((ItemStack) obj).getItemName();
 		} else if (obj instanceof Entity) { // Entities
 			return ((Entity) obj).getEntityName().toString().toLowerCase().replace("_", " ");
 		} else if (obj instanceof Block) { // Blocks
-			return ((Block) obj).getBlockName();
+			return ((Block) obj).getLocalizedName();
 		/*} else if (obj instanceof Material) { // Just material
 			return describeMaterial((Material) obj);*/
 		}
